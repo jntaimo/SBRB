@@ -16,7 +16,12 @@ long currentLTime = 0;
 long prevLTime = 0;
 float radL = 0;
 
+float alpha = 0.15;
+float filtRadL = 0;
 Encoder encL(40, 41);
+
+long prevTime = 0;
+int delayTime = 25;
 
 void readEncoders();
 void setup() {
@@ -37,8 +42,18 @@ void loop() {
   digitalWrite(DIR2, LOW);
   analogWrite(PWM1, 255);
   analogWrite(PWM2, 0);
+
   readEncoders();
-  Serial.println(radL);
+  filtRadL = alpha*radL + (1-alpha)*filtRadL;
+
+  //Only print data if the current time is more than 25 ms greater than the last time it was printed
+  if(millis()>prevTime+delayTime){
+    prevTime = millis();
+    Serial.print(radL);
+    Serial.print("\t");
+    Serial.println(filtRadL);
+  }
+
   delay(2);
 }
 
