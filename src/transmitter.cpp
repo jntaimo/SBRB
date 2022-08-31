@@ -3,8 +3,8 @@
 #include <nRF24L01.h>
 #include <RF24.h>
 
-#define CE 7
-#define CSN 8
+#define CE 9
+#define CSN 10
 
 RF24 radio(CE, CSN);
 
@@ -21,5 +21,6 @@ void transmitterSetup() {
 void transmitterLoop() {
     const char text[] = "Hello World!";
     radio.write(&text, sizeof(text));
+    Serial.println("Sending message");
     delay(1000);
 }
