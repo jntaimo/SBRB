@@ -35,7 +35,7 @@ Encoder encL(encLPinA, encLPinB);
 Encoder encR(encRPinA, encRPinB);
 
 long prevTime = 0;
-int delayTime = 25;
+long delayTime = 25;
 
 
 void encoderSetup() {
