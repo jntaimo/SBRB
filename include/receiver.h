@@ -1,2 +1,0 @@
-void receiverSetup();
-void receiverLoop();

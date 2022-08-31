@@ -1,8 +1,9 @@
 #include <Arduino.h>
 #include "encoders.h"
 #include "drippyimu.h"
-#include "transmitter.h"
-//#include "receiver.h"
+//#include "robotWireless.h"
+#include "controllerWireless.h"
+
 //Delay in milliseconds
 long loopDelay = 20;
 long prevLoopTime = 0;
@@ -23,16 +24,16 @@ void setup() {
   Serial.println("starting");
   encoderSetup();
   imuSetup();
-  transmitterSetup();
-  //receiverSetup();
+  controllerSetup();
+  //robotReceiverSetup();
 }
 
 
 
 void loop() {
   //encoderLoop();
-  transmitterLoop();
-  //receiverLoop();
+  controllerLoop();
+  //robotReceiverLoop();
   // readGyro(yaw, pitch, roll);
   // if (millis() > prevLoopTime + loopDelay){
   //   prevLoopTime = millis();

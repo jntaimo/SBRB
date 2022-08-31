@@ -1,0 +1,2 @@
+void robotReceiverSetup();
+void robotReceiverLoop();
