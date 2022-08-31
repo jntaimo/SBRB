@@ -35,7 +35,7 @@ void imuLoop() {
 }
 
 // Takes in references to variables to store gyro info, and directly changes them
-void readGyro(int &x, int &y, int &z){
+void readGyro(float &x, float &y, float &z){
     sensors_event_t event; 
     bno.getEvent(&event);
     x = event.orientation.x;
