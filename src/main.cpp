@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "encoders.h"
 #include "drippyimu.h"
+#include "wireless.h"
 //Delay in milliseconds
 long loopDelay = 20;
 long prevLoopTime = 0;
@@ -11,6 +12,7 @@ void setup() {
   Serial.println("starting");
   encoderSetup();
   imuSetup();
+  wirelessSetup();
 }
 
 
