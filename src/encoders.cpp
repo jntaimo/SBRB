@@ -56,7 +56,8 @@ void encoderLoop() {
     Serial.print(filtRadL);
     Serial.print("\t");
     Serial.print(radR);
-    Serial.print(filtRadR);
+    Serial.print("\t");
+    Serial.println(filtRadR);
   }
 
   delay(2);
