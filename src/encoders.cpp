@@ -27,7 +27,7 @@ float radR = 0;
 //Smoothing constant for filtering
 //alpha closer to 0 is closer to raw data, very fast
 //alpha closer to 1 is more smooth, but more sluggish
-float alpha = 0.15;
+float alpha = 0.1;
 float filtRadL = 0;
 float filtRadR = 0;
 
@@ -43,23 +43,26 @@ void encoderSetup() {
 }
 
 
-
 void encoderLoop() {
   readEncoders();
-  filtRadL = alpha*radL + (1-alpha)*filtRadL;
-  filtRadR = alpha*radR + (1-alpha)*filtRadR;
+
   //Only print data if the current time is more than 25 ms greater than the last time it was printed
-  if(millis() > prevTime+delayTime){
-    prevTime = millis();
-    Serial.print(radL);
+  if(millis() > prevTime + delayTime){
+    //Print the current rotation speed
+     prevTime = millis();
+    // Serial.print(radL);
+    // Serial.print("\t");
+    // Serial.print(filtRadL);
+    // Serial.print("\t");
+    // Serial.print(radR);
+    // Serial.print("\t");
+    // Serial.println(filtRadR);
+    //Print the current position
+    Serial.print(currentLPos);
     Serial.print("\t");
-    Serial.print(filtRadL);
-    Serial.print("\t");
-    Serial.print(radR);
-    Serial.print(filtRadR);
+    Serial.println(currentRPos);
   }
 
-  delay(2);
 }
 
 void readEncoders(){
@@ -75,5 +78,10 @@ void readEncoders(){
   currentRTime = micros();
   radR = float(currentRPos-prevRPos)*2*PI/(PPR*(currentRTime - prevRTime))*1e6;
   prevRPos = currentRPos; 
-  prevRTime = currentRTime;   
+  prevRTime = currentRTime;  
+
+  //filter values to smooth noise
+  filtRadL = alpha*radL + (1-alpha)*filtRadL;
+  filtRadR = alpha*radR + (1-alpha)*filtRadR;  
+
 }
