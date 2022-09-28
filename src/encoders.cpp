@@ -39,7 +39,7 @@ long delayTime = 25;
 
 
 void encoderSetup() {
-  Serial.begin(115200);
+  //Serial.begin(115200);
 }
 
 
@@ -58,9 +58,9 @@ void encoderLoop() {
     // Serial.print("\t");
     // Serial.println(filtRadR);
     //Print the current position
-    Serial.print(currentLPos);
-    Serial.print("\t");
-    Serial.println(currentRPos);
+    // Serial.print(currentLPos);
+    // Serial.print("\t");
+    // Serial.println(currentRPos);
   }
 
 }

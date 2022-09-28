@@ -41,4 +41,11 @@ void readGyro(float &x, float &y, float &z){
     x = event.orientation.x;
     y = event.orientation.y;
     z = event.orientation.z;
+    
+}
+
+void readPitchRate(float &pitchRate){
+imu::Vector<3> gyro = bno.getVector(Adafruit_BNO055::VECTOR_GYROSCOPE);
+  
+  pitchRate = gyro.z();
 }
